@@ -1,19 +1,16 @@
-// MakeFun Coding Competition
+// The Worst Pizza Topping
 // Entry validated: output is 1-200 chars, one line, deterministic.
-import { writeFileSync, mkdirSync } from "node:fs";
-import { join } from "node:path";
+import { writeFileSync, mkdirSync } from 'node:fs';
+import { join } from 'node:path';
 
-const LINE = "The Open-Casket Margherita comes heavily blanketed in wet lint harvested from the pockets of wool trousers found in a thrift store basement.";
+const LINE = "Four Cheese Pizza with asbestos sprinkles — each slice arrives with a retainer lawyer billing by the breath, paid exclusively in your lung capacity";
 
-if (!(1 <= LINE.length && LINE.length <= 200 && LINE.trim().length > 0 && !LINE.includes("\n"))) {
-  throw new Error("Invalid LINE content");
+if (!(1 <= LINE.length && LINE.length <= 200 && LINE.trim().length > 0 && !LINE.includes('\n'))) {
+  throw new Error('Invalid line');
 }
 
-const outDir = process.env.MAKEFUN_OUTPUT_DIR || "/output";
-mkdirSync(outDir, { recursive: true });
-
-const outPath = join(outDir, "entry.txt");
-writeFileSync(outPath, LINE, { encoding: "utf-8" });
-
-console.log(outPath);
-console.log(LINE.length);
+const outputDir = process.env.MAKEFUN_OUTPUT_DIR ?? '/output';
+mkdirSync(outputDir, { recursive: true });
+const outputPath = join(outputDir, 'entry.txt');
+writeFileSync(outputPath, LINE, 'utf8');
+console.log(`${outputPath} ${LINE.length}`);
